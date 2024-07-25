@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.css" rel="stylesheet" >
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"></script>
+    <title>Rekapitulasi Nilai</title>
+    <link rel="shortcut icon" href="icon/logo.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body{
+            background-color: 	#000000;
+        }
+        .navbar{
+          background-color: 	#16007A;
+        }
+        .tbl{
+          margin: auto;
+          background-color: #afafaf;
+          width: 250px;
+          height: 290px;
+          margin-top: 100px;
+          border-radius: 5%;
+        }
+        /* #overflowTest {
+          background: #afafaf;
+          color: #afafaf;
+          padding: 15px;
+          width: 100%;
+          height: 240px;
+          overflow: auto;
+          border-top: 2px;
+        }
+        .atas{
+          border-top-left-radius: 10px;
+          border-top-right-radius: 10px;
+          height: 50px;
+        }
+        .bawah{
+          text-align: center;
+        }
+        .collapsible-menu label {
+            font-family: 'Sedgwick Ave Display', cursive;
+            font-size: 56px;
+            display: block;
+            cursor: pointer;
+            background: url(menu.png) no-repeat left center;
+            padding: 10px 0 10px 50px;
+        }
+        input#menu {
+            display: none;
+        }
+        .collapsible {
+          background-color: #d8d8d8;
+          color: #434343;
+          cursor: pointer;
+          padding: 18px;
+          width: 100%;
+          border: none;
+          text-align: center;
+          outline: none;
+          font-size: 15px;
+        } */
+
+        /* .active, .collapsible:hover {
+          background-color: #afafaf;
+        } */
+
+        .content {
+          padding: 0 18px;
+          display: none;
+          overflow: hidden;
+          background-color: #f1f1f1;
+          text-align: center;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background-color: #34495e;
+            color: #ecf0f1;
+        }
+        table th, table td {
+            border: 1px solid #7f8c8d;
+            padding: 8px;
+            text-align: center;
+        }
+        table th {
+            background-color: #464646; /* Dark gray header */
+            color: #ecf0f1;
+            padding: 8px;
+            border: 1px solid #7f8c8d;
+        }
+        table td {
+            background-color: #a8a8a8; /* Light gray body */
+            color: #2C3E50;
+            padding: 8px;
+            border: 1px solid #7f8c8d;
+            text-align: center;
+        }
+        .dropbtn:hover, .dropbtn:focus {
+          background-color: #b9b9b9;
+        }
+
+        .dropdown {
+          position: relative;
+          display: inline-block;
+        }
+
+        .dropdown-content {
+          display: none;
+          position: absolute;
+          background-color: #f1f1f1;
+          min-width: 160px;
+          overflow: auto;
+          box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+          z-index: 1;
+        }
+
+        .dropdown-content a {
+          color: black;
+          padding: 12px 16px;
+          text-decoration: none;
+          display: block;
+        }
+
+        .dropdown a:hover {background-color: #ddd;}
+
+        .show {display: block;}
+</style>
+</head>
+<body style="background-color:white;">
+    </style>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="container-fluid 3-rows">
+      <div class="left">
+        <a class="navbar-brand" href="dashboard.html" style="color: #ffffff; text-align: center; text-decoration: solid; font-size: 45px;">
+          <img src="img/logo.png" width="70px" height="70px" class="d-inline-block align-top" alt="">
+          <b>REKAPITULASI NILAI</b>
+        </a>
+      </div>
+    </div>
+  </nav>
+  <div class="row" style="margin-top: 10px; margin-left: 10px; margin-right: 5px;">
+    <div class="col">
+      <div>
+        <div class="dropdown">
+          <button onclick="myFunction()" class="dropbtn" style="font-size: 16px; background-color: #c2c2c2; color: #464646; border: none; width: 200px; height: 50px; border-radius: 5px; float: left; margin-bottom: 10px;">
+            <b>Pilih Kelas</b>
+          </button>
+          <div id="myDropdown" class="dropdown-content">
+            <a href="#kelas1">Kelas 01</a>
+            <a href="#kelas2">Kelas 02</a>
+            <a href="#kelas3">Kelas 03</a>
+          </div>
+        </div>
+        <a href="input.html">
+          <button style="font-size: 16px; background-color: #c2c2c2; color: #464646; border: none; width: 200px; height: 50px; border-radius: 5px; float: right; margin-bottom: 10px;">
+            <b>Nilai</b>
+        </button>
+        </a>
+      </div>
+      <table>
+        <thead>
+          <tr>
+            <th>Nama Mahasiswa</th>
+            <th>NIM</th>
+            <th>T1</th>
+            <th>T2</th>
+            <th>T3</th>
+            <th>T4</th>
+            <th>T5</th>
+            <th>T6</th>
+            <th>T7</th>
+            <th>R1</th>
+            <th>UTS</th>
+            <th>T9</th>
+            <th>T10</th>
+            <th>T11</th>
+            <th>T12</th>
+            <th>T13</th>
+            <th>T14</th>
+            <th>T15</th>
+            <th>R2</th>
+            <th>UAS</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+          </tr>
+          <tr>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+          </tr>
+          <tr>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+          </tr>
+          <tr>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+          </tr>
+          <tr>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+          </tr>
+          <tr>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+          </tr>
+          <tr>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+          </tr>
+          <tr>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+          </tr>
+          <tr>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+          </tr>
+          <tr>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+          </tr>
+          <tr>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+          </tr>
+          <tr>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+          </tr>
+          <tr>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+          </tr>
+          <tr>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+          </tr>
+          <tr>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+          </tr>
+          <tr>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+          </tr>
+        </tbody>
+    </table>
+      </form>
+    </div>
+  </div>
+  <!-- <div class="row" style="margin-top: 10px; margin-left: 10px; margin-right: 5px;">
+    <div class="col3" style="background-color: #afafaf; color: #434343; text-decoration: solid; border-radius: 5px; font-size: 50px; text-align: center;  width: 550px; margin-left: 5px;">
+        <img src="img/qrcodedosen.png" style="width: 490px;" alt="">
+        <br>
+        <b>QR Code Dosen</b>
+    </div>
+      <div class="col">
+        <div style="background-color: #afafaf; height: 270px; border-radius: 10px;">
+          <div class="navbar navbar-inverse" style="background-color: #afafaf;">
+            <div class="container-fluid">
+              <div class="navbar-header">
+                <b style="color: #434343;">Jadwal hari ini</b>
+              </div>
+              <ul class="nav navbar-nav navbar-right">
+                <button type="button" style="width: 40px; height: 30px; vertical-align: middle; border: none;" ><b>Edit</b></button>
+              </ul>
+            </div>
+          </div>
+          <div id="overflowTest">
+            <table class="table" style="background-color: #afafaf;">
+              <tr>
+                <td style="color: #434343; background-color: #afafaf;">
+                  <b>Jadwal Mata Kuliah</b>
+                </td>
+              </tr>
+              <tr>
+                <td style="color: #434343; background-color: #afafaf;">
+                  <b>Jadwal Mata Kuliah</b>
+                </td>
+              </tr>
+              <tr>
+                <td style="color: #434343; background-color: #afafaf;">
+                  <b>Jadwal Mata Kuliah</b> 
+                </td>
+              </tr>
+              <tr>
+                <td style="color: #434343; background-color: #afafaf;">
+                  <b>Jadwal Mata Kuliah</b> 
+                </td>
+              </tr>
+              <tr>
+                <td style="color: #434343; background-color: #afafaf;">
+                  <b>Jadwal Mata Kuliah</b> 
+                </td>
+              </tr>
+              <tr>
+                <td style="color: #434343; background-color: #afafaf;">
+                  <b>Jadwal Mata Kuliah</b> 
+                </td>
+              </tr>
+              <tr>
+                <td style="color: #434343; background-color: #afafaf;">
+                  <b>Jadwal Mata Kuliah</b> 
+                </td>
+              </tr>
+              <tr>
+                <td style="color: #434343; background-color: #afafaf;">
+                  <b>Jadwal Mata Kuliah</b> 
+                </td>
+              </tr>
+              <tr>
+                <td style="color: #434343; background-color: #afafaf;">
+                  <b>Jadwal Mata Kuliah</b> 
+                </td>
+              </tr>
+            </table>
+          </div>
+        </div>
+        <div style="margin-top: 25px;">
+          <button type="button" class="collapsible"><b>Jadwal Kuliah</b></button>
+        <div class="content">
+          <b style="color: #434343;">Tidak ada jadwal kuliah</b><br>
+        </div>
+        <button type="button" class="collapsible"><b>Jadwal Responsi</b></button>
+        <div class="content">
+          <b style="color: #434343;">Tidak ada jadwal kuliah</b><br>
+        </div>
+        <button type="button" class="collapsible"><b>Jadwal UTS</b></button>
+        <div class="content">
+          <b style="color: #434343;">Tidak ada jadwal kuliah</b><br>
+        </div>
+        <button type="button" class="collapsible"><b>Jadwal UAS</b></button>
+        <div class="content">
+          <b style="color: #434343;">Tidak ada jadwal kuliah</b>
+        </div>
+
+        <script>
+        var coll = document.getElementsByClassName("collapsible");
+        var i;
+
+        for (i = 0; i < coll.length; i++) {
+          coll[i].addEventListener("click", function() {
+            this.classList.toggle("active");
+            var content = this.nextElementSibling;
+            if (content.style.display === "block") {
+              content.style.display = "none";
+            } else {
+              content.style.display = "block";
+            }
+          });
+        }
+        </script>
+        </div>
+      </div>
+    </div> -->
+    <script>
+      /* When the user clicks on the button, 
+      toggle between hiding and showing the dropdown content */
+      function myFunction() {
+        document.getElementById("myDropdown").classList.toggle("show");
+      }
+      
+      // Close the dropdown if the user clicks outside of it
+      window.onclick = function(event) {
+        if (!event.target.matches('.dropbtn')) {
+          var dropdowns = document.getElementsByClassName("dropdown-content");
+          var i;
+          for (i = 0; i < dropdowns.length; i++) {
+            var openDropdown = dropdowns[i];
+            if (openDropdown.classList.contains('show')) {
+              openDropdown.classList.remove('show');
+            }
+          }
+        }
+      }
+      </script>
+</body>
+</html
